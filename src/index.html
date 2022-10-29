@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, inittail-scale-1.0">
+        <script src="https://kit.fontawesome.com/114679ae7.js" 
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <title>BTL</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="/BTL/img/logo_shop.png" alt="logo" style="width: 70%; height: 50px;">
+            </div>
+            <div class="menu">
+                <li><a href="">NỮ</a> 
+                    <ul class="sub-menu"> 
+                    <li><a href="">SẢN PHẨM MỚI</a></li>
+                    <li><a href="">ÁO</a></li>
+                    <li><a href="">QUẦN & VÁY</a></li>
+                    <li><a href="">FULL SET</a></li>
+                    </ul>
+                
+                
+                
+                </li>
+                <li><a href="">NAM</a> </li>
+                <li><a href="">SALE</a> </li>
+                <li><a href="">BST</a> </li>
+                <li><a href="">THÔNG TIN</a> </li>
+            </div>
+            <div class="others">
+                <li> <input type="text"> <a href =""> <i class="fa-solid fa-search"></i> </a></li>
+                <li> <a class="fa fa-paw" href="" ></a></li>
+                <li> <a class="fa fa-user" href="" ></a></li>
+                <li> <a class="fa fa-shopping-bag" href="" ></a></li>
+            </div>
+        </header>
+        <section id="Slider">
+            <div class="aspect-ratio-169">
+                <img src="/BTL/img/background.png" alt="">
+                <img src="/BTL/img/background1.png" alt="">
+                <img src="/BTL/img/background2.png" alt="">
+
+            </div>
+            <div class="dot-container">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+         
+
+        </section>
+        <!-- <section class="app-container"></section> -->
+        <div class="footer-top">
+            <!-- <li><a href=""><img src="/BTL/img/bocongthuong.png" alt=""></a></li> -->
+            <li><a href="">Liên hệ</a></li>
+            <li><a href="">Tuyển dụng</a></li>
+            <li><a href="">Giới thiệu</a></li>
+            <li>
+                <a href="https://www.facebook.com/profile.php?id=100034622193129" ><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href="" ><i class="fab fa-youtube"></i></a>
+            </li>
+        </div>
+        <div class="footer-center">
+            <p>Công ty cổ phần Yuuki với số đăng ký kinh doanh : <b>0123456789</b> <br>
+                Địa chỉ Đăng ký : <b>Tổ dân phố A, Phố B, Quận C, Thành phố Hà Nội.</b><br>
+                Đặt hàng online : <b>0123456789</b>.
+            </p>
+        </div>
+
+    </body>
+
+    <script>
+        const header = document.querySelector('header')
+        window.addEventListener("scroll", function(){
+            x=window.pageYOffset
+            if(x > 0){
+                header.classList.add("sticky")
+            } else {
+                header.classList.remove("sticky")
+            }
+        })
+
+
+        const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
+        const imgContainer = document.querySelector('.aspect-ratio-169')
+        const dotItem = document.querySelectorAll('.dot')
+        let imgNumber = imgPosition.length
+        let index = 0
+        
+        imgPosition.forEach(function(image, index) {
+            image.style.left = index*100 + "%"
+            dotItem[index].addEventListener("click", function(){
+                slider(index)
+            })
+        })
+        function imgSlide(){
+            index++;
+            if(index >= imgNumber) {index = 0 }
+            slider(index)
+            
+        }
+        function slider(index){
+            imgContainer.style.left = '-' + index*100 + '%'
+            const dotActive = document.querySelector('.active')
+            dotActive.classList.remove('active')
+            dotItem[index].classList.add("active")
+        }
+
+        setInterval(imgSlide,5000)
+
+    </script>
+</html>
